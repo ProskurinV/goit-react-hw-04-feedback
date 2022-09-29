@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import Section from 'components/Section';
 import { MainBox } from './App.styled';
-// import Notification from 'components/Notification';
+import Notification from 'components/Notification';
 import Statistics from 'components/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions';
 
@@ -23,6 +23,7 @@ export default class App extends Component {
         <Section title="Please, leave feedback">
           <FeedbackOptions />
           <Statistics title="Statistics" />
+          <Notification />
         </Section>
       </MainBox>
     );
