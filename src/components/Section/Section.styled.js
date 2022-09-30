@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SectionStyle = styled.section`
   margin-top: 50px;
-  margin-bottom: 50px;
+
   padding-top: 20px;
 `;
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StatSection = styled.div`
-  margin-top: 50px;
   padding-bottom: 20px;
 `;
 

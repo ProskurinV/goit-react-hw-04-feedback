@@ -13,17 +13,47 @@ export default class App extends Component {
     bad: 0,
   };
 
-  countTotalFeedback() {}
+  stateKeys = Object.keys(this.state);
 
-  countPositiveFeedbackPercentage() {}
+  options = this.stateKeys;
+
+  handleFeedbackСlick = option => {
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
+  };
+
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce((acc, value) => acc + value, 0);
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100) || 0;
+  };
 
   render() {
+    const { good, neutral, bad } = this.state;
+
     return (
       <MainBox>
         <Section title="Please, leave feedback">
-          <FeedbackOptions />
-          <Statistics title="Statistics" />
-          <Notification />
+          <FeedbackOptions
+            options={this.stateKeys}
+            onLeaveFeedback={this.handleFeedbackСlick}
+          />
+
+          {this.countTotalFeedback() === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
+            <Statistics
+              title="Statistics"
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          )}
         </Section>
       </MainBox>
     );
