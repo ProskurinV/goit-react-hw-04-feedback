@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
 import { BtnList, FeedbackBtn, Btn } from './FeedbackOptions.styled';
@@ -18,3 +18,8 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     </BtnList>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.string.isRequired,
+  onLeaveFeedback: PropTypes.string.isRequired,
+};
