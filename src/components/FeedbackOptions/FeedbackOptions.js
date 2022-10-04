@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 
 import { BtnList, FeedbackBtn, Btn } from './FeedbackOptions.styled';
 
@@ -8,7 +8,7 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     <BtnList>
       {options.map(option => {
         return (
-          <FeedbackBtn key={shortid.generate()}>
+          <FeedbackBtn key={option}>
             <Btn type="button" onClick={() => onLeaveFeedback(option)}>
               {option}
             </Btn>
@@ -20,6 +20,6 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.string.isRequired,
-  onLeaveFeedback: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
